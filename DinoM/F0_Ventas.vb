@@ -3550,14 +3550,10 @@ salirIf:
         End If
     End Sub
 
-    Private Sub TbNombre1_TextChanged(sender As Object, e As EventArgs) Handles TbNombre1.TextChanged
-
-    End Sub
 
     Private Sub tbFechaVenta_ValueChanged(sender As Object, e As EventArgs) Handles tbFechaVenta.ValueChanged
         dtiFechaFactura.Value = tbFechaVenta.Value
     End Sub
-
 
 #End Region
 End Class
