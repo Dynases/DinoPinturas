@@ -153,7 +153,8 @@ Public Class F0_Formula
         MP_CargarComboLibreria(cb_Tipo, 7, 1)
         MP_CargarComboLibreria(cb_Estado, 8, 1)
         cbSucursal.Value = 1
-        cb_Estado.Value = CType(ENEstadoProductoCompuestoVenta.PENDIENTE, Integer)
+        cb_Estado.Value = CType(ENEstadoProductoCompuestoVenta.COMPLETADO, Integer)
+        cb_Estado.ReadOnly = True
         cb_Tipo.Value = CType(ENEstadoProductoCompuesto.MAGISTRAL, Integer)
         tb_FechaDe.Value = Now.Date.ToString("yyyy/MM/dd")
         tb_FechaHasta.Value = Now.Date.ToString("yyyy/MM/dd")
@@ -249,7 +250,7 @@ Public Class F0_Formula
         End With
         With Dgv_Busqueda.RootTable.Columns("Cantidad")
             .Caption = "Cantidad"
-            .Width = 200
+            .Width = 120
             .FormatString = "0.00"
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -259,7 +260,7 @@ Public Class F0_Formula
         End With
         With Dgv_Busqueda.RootTable.Columns("Fecha")
             .Caption = "Fecha"
-            .Width = 200
+            .Width = 120
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.FontSize = gi_fuenteTamano
@@ -268,7 +269,7 @@ Public Class F0_Formula
         End With
         With Dgv_Busqueda.RootTable.Columns("Estado")
             .Caption = "Estado"
-            .Width = 150
+            .Width = 140
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.FontSize = gi_fuenteTamano
@@ -282,6 +283,7 @@ Public Class F0_Formula
             .ShowRowSelector = True
             .UseHeaderSelector = True
             .FilterEditType = Janus.Windows.GridEX.FilterEditType.NoEdit
+            .Visible = False
         End With
         'Habilitar Filtradores
         With Dgv_Busqueda
@@ -326,8 +328,8 @@ Public Class F0_Formula
             End With
             With Dgv_Detalle.RootTable.Columns("pdeti")
                 .Key = "pdeti"
-                .Caption = "Etiqueta"
-                .Width = 170
+                .Caption = "Productos"
+                .Width = 350
                 .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
                 .CellStyle.FontSize = gi_fuenteTamano
@@ -367,7 +369,7 @@ Public Class F0_Formula
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center
                 .CellStyle.FontSize = gi_fuenteTamano
                 .AllowSort = False
-                .Visible = True
+                .Visible = False
 
             End With
             With Dgv_Detalle.RootTable.Columns("pdcant")
@@ -391,7 +393,7 @@ Public Class F0_Formula
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .CellStyle.FontSize = gi_fuenteTamano
                 .AllowSort = False
-                .Visible = True
+                .Visible = False
 
             End With
             With Dgv_Detalle.RootTable.Columns("pdValor2")
@@ -403,7 +405,7 @@ Public Class F0_Formula
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .CellStyle.FontSize = gi_fuenteTamano
                 .AllowSort = False
-                .Visible = True
+                .Visible = False
 
             End With
             With Dgv_Detalle.RootTable.Columns("pdJarabe")
@@ -413,7 +415,7 @@ Public Class F0_Formula
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .CellStyle.FontSize = gi_fuenteTamano
                 .AllowSort = False
-                .Visible = True
+                .Visible = False
 
             End With
             With Dgv_Detalle.RootTable.Columns("pdvalor")
@@ -425,7 +427,7 @@ Public Class F0_Formula
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .CellStyle.FontSize = gi_fuenteTamano
                 .AllowSort = False
-                .Visible = True
+                .Visible = False
 
             End With
             With Dgv_Detalle.RootTable.Columns("pdprec")
@@ -442,7 +444,7 @@ Public Class F0_Formula
             End With
             With Dgv_Detalle.RootTable.Columns("pdtotal")
                 .Key = "pdtotal"
-                .Caption = "Total"
+                .Caption = "Total Costo"
                 .FormatString = "0.00000"
                 .Width = 100
                 .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center

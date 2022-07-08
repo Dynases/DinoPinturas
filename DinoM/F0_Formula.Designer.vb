@@ -329,6 +329,7 @@ Partial Class F0_Formula
         Me.btn_Modificar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btn_Modificar.TabIndex = 4
         Me.btn_Modificar.Text = "Modificar"
+        Me.btn_Modificar.Visible = False
         '
         'btn_Confirmar
         '
@@ -344,6 +345,7 @@ Partial Class F0_Formula
         Me.btn_Confirmar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btn_Confirmar.TabIndex = 6
         Me.btn_Confirmar.Text = "Confirmar"
+        Me.btn_Confirmar.Visible = False
         '
         'Btn_Imprimir
         '
@@ -359,6 +361,7 @@ Partial Class F0_Formula
         Me.Btn_Imprimir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Btn_Imprimir.TabIndex = 5
         Me.Btn_Imprimir.Text = "Imprimir"
+        Me.Btn_Imprimir.Visible = False
         '
         'PanelProducto
         '
@@ -407,7 +410,7 @@ Partial Class F0_Formula
         Me.Controls.Add(Me.PanelProducto)
         Me.Controls.Add(Me.PanelSuperior)
         Me.Name = "F0_Formula"
-        Me.Text = "FORMULA MAGISTRAL"
+        Me.Text = "FORMULA PRODUCTOS COMPLETADOS"
         Me.PanelSuperior.ResumeLayout(False)
         Me.PanelSuperior.PerformLayout()
         CType(Me.cb_Estado, System.ComponentModel.ISupportInitialize).EndInit()

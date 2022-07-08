@@ -152,7 +152,7 @@ Public Class F0_MCompras
         btnGrabar.Enabled = True
 
         tbNitProv.ReadOnly = False
-        swEmision.IsReadOnly = False
+        'swEmision.IsReadOnly = False
         swConsigna.IsReadOnly = False
         swRetencion.IsReadOnly = False
         tbNFactura.ReadOnly = False
@@ -190,7 +190,7 @@ Public Class F0_MCompras
         tbFechaVenta.Value = Now.Date
         tbFechaVenc.Visible = True
         lbCredito.Visible = True
-        swEmision.Value = True
+        swEmision.Value = False
         swConsigna.Value = False
         swRetencion.Value = False
         tbNFactura.Clear()

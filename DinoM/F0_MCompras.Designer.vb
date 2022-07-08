@@ -1027,8 +1027,6 @@ Partial Class F0_MCompras
         Me.swEmision.Size = New System.Drawing.Size(135, 22)
         Me.swEmision.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swEmision.TabIndex = 369
-        Me.swEmision.Value = True
-        Me.swEmision.ValueObject = "Y"
         '
         'LabelX16
         '

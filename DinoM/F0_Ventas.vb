@@ -74,13 +74,13 @@ Public Class F0_Ventas
         End If
     End Sub
     Sub _prValidadFactura()
-        'If (OcultarFact = 1) Then
-        '    GroupPanelFactura2.Visible = False
-        '    GroupPanelFactura.Visible = False
-        'Else
-        '    GroupPanelFactura2.Visible = True
-        '    GroupPanelFactura.Visible = True
-        'End If
+        If (OcultarFact = 1) Then
+            GroupPanelFactura2.Visible = False
+            GroupPanelFactura.Visible = False
+        Else
+            GroupPanelFactura2.Visible = True
+            GroupPanelFactura.Visible = True
+        End If
 
     End Sub
     Public Sub _prValidarLote()
@@ -178,7 +178,7 @@ Public Class F0_Ventas
         tbCodigo.ReadOnly = False
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
         ''  tbVendedor.ReadOnly = False
-        tbEmision.Enabled = True
+        'tbEmision.Enabled = True
         tbObservacion.ReadOnly = False
         tbFechaVenta.IsInputReadOnly = False
         tbFechaVenc.IsInputReadOnly = False
@@ -216,7 +216,7 @@ Public Class F0_Ventas
         End If
     End Sub
     Private Sub _Limpiar()
-        tbEmision.SelectedIndex = 0
+        tbEmision.SelectedIndex = 1
         tbProforma.Clear()
         tbCodigo.Clear()
         tbCliente.Clear()
@@ -760,8 +760,8 @@ Public Class F0_Ventas
         With grProductos.RootTable.Columns(5)
             .Visible = True
             .Key = "pctotal"
-            .Caption = "Total"
-            .Width = 250
+            .Caption = "Total Costo"
+            .Width = 120
             .FormatString = "0.00"
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -770,7 +770,7 @@ Public Class F0_Ventas
         End With
         With grProductos.RootTable.Columns(6)
             .Key = "TIpo"
-            .Caption = "TIpo"
+            .Caption = "Tipo"
             .Width = 150
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center
@@ -787,6 +787,10 @@ Public Class F0_Ventas
             .CellStyle.FontSize = gi_fuenteTamano
             .AllowSort = False
             .Visible = True
+        End With
+        With grProductos.RootTable.Columns(8)
+            .Key = "pcCantidad"
+            .Visible = False
         End With
         'Habilitar Filtradores
         With grProductos
@@ -2163,12 +2167,16 @@ Public Class F0_Ventas
             _Fecha = Split(_FechaAct, "-")
             _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
 
+            Dim _Ds2 = L_Reporte_Factura_Cia("1")
             Dim objrep As New R_NotaDeVenta
             objrep.SetDataSource(dt)
             objrep.SetParameterValue("Total", total)
             objrep.SetParameterValue("TotalBs", li)
             objrep.SetParameterValue("TotalDo", lid)
             objrep.SetParameterValue("TotalDoN", totald)
+            objrep.SetParameterValue("Empresa", _Ds2.Tables(0).Rows(0).Item("scneg").ToString)
+            objrep.SetParameterValue("Direccion", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+            objrep.SetParameterValue("Telefono", _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
             objrep.SetParameterValue("usuario", gs_user)
             objrep.SetParameterValue("estado", 1)
 

@@ -24,6 +24,7 @@ Public Class Pr_VentasAtendidas
         tbAlmacen.Enabled = False
         CheckTodosVendedor.CheckValue = True
         CheckTodosAlmacen.CheckValue = True
+        ckTodosCliente.CheckValue = True
         If (gb_FacturaIncluirICE) Then
             swIce.Visible = True
         Else

@@ -19,6 +19,7 @@ Public Class F0_ProductoCompuesto
     Public _modulo As SideNavItem
     Public Limpiar As Boolean = False  'Bandera para indicar si limpiar todos los datos o mantener datos ya registrados
     Public Tipo As Integer = 0
+    Public DescontarInv As Integer = 0
     Public _idProcuctoCompuesto As Integer = 0
     Public _IdCliente As Integer = 0
     Dim G_Lote As Boolean = False
@@ -521,7 +522,16 @@ Public Class F0_ProductoCompuesto
             .AllowSort = False
             .Visible = True
         End With
-
+        With Dgv_Busqueda.RootTable.Columns(9)
+            .Key = "pcOrdenPed"
+            .Caption = "Nro. Orden"
+            .Width = 100
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .CellStyle.FontSize = gi_fuenteTamano
+            .AllowSort = False
+            .Visible = True
+        End With
         'Habilitar Filtradores
         With Dgv_Busqueda
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -576,8 +586,8 @@ Public Class F0_ProductoCompuesto
         End With
         With Dgv_Detalle.RootTable.Columns(3)
             .Key = "pdeti"
-            .Caption = "Etiqueta"
-            .Width = 200
+            .Caption = "Productos"
+            .Width = 450
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .CellStyle.FontSize = gi_fuenteTamano
@@ -618,13 +628,13 @@ Public Class F0_ProductoCompuesto
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.FontSize = gi_fuenteTamano
             .AllowSort = False
-            .Visible = True
+            .Visible = False
             .Position = 7
         End With
         With Dgv_Detalle.RootTable.Columns(8)
             .Key = "pdcant"
             .Caption = "Cantidad"
-            .FormatString = "0.000"
+            .FormatString = "0.0000"
             .Width = 110
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -642,7 +652,7 @@ Public Class F0_ProductoCompuesto
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .CellStyle.FontSize = gi_fuenteTamano
             .AllowSort = False
-            .Visible = True
+            .Visible = False
             .Position = 9
         End With
         With Dgv_Detalle.RootTable.Columns(10)
@@ -654,7 +664,7 @@ Public Class F0_ProductoCompuesto
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .CellStyle.FontSize = gi_fuenteTamano
             .AllowSort = False
-            .Visible = True
+            .Visible = False
             .Position = 10
         End With
         With Dgv_Detalle.RootTable.Columns(11)
@@ -665,7 +675,7 @@ Public Class F0_ProductoCompuesto
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .CellStyle.FontSize = gi_fuenteTamano
             .AllowSort = False
-            .Visible = True
+            .Visible = False
             .Position = 12
         End With
         With Dgv_Detalle.RootTable.Columns(12)
@@ -677,7 +687,7 @@ Public Class F0_ProductoCompuesto
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .CellStyle.FontSize = gi_fuenteTamano
             .AllowSort = False
-            .Visible = True
+            .Visible = False
             .Position = 12
         End With
         With Dgv_Detalle.RootTable.Columns(13)
@@ -694,7 +704,7 @@ Public Class F0_ProductoCompuesto
         End With
         With Dgv_Detalle.RootTable.Columns(14)
             .Key = "pdtotal"
-            .Caption = "Total"
+            .Caption = "Total Costo"
             .FormatString = "0.00000"
             .Width = 110
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
@@ -780,6 +790,7 @@ Public Class F0_ProductoCompuesto
         tb_Codigo.Clear()
         tb_Descripcion.Clear()
         tb_Observacion.Clear()
+        tbCodOrden.Clear()
         MP_ActualizaFecha()
         MP_MostrarGrillaDetalle(-1)
         With Dgv_Detalle.RootTable.Columns("img")
@@ -868,6 +879,7 @@ Public Class F0_ProductoCompuesto
                     cb_Tipo.Value = _tablaEncabezado.Rows(0).Item("pcEst")
                     cbSucursal.Value = _tablaEncabezado.Rows(0).Item("pcAlmacen")
                     tb_Cantidad.Value = _tablaEncabezado.Rows(0).Item("pcCantidad").ToString()
+                    tbCodOrden.Text = _tablaEncabezado.Rows(0).Item("pcOrdenPed").ToString()
                     'CARGAR DETALLE 
                     MP_MostrarGrillaDetalle(_idOriginal)
                 End If
@@ -927,9 +939,29 @@ Public Class F0_ProductoCompuesto
             tb_Codigo.BackColor = Color.White
             MEP.SetError(tb_Descripcion, "")
         End If
+        If tb_Codigo.Text = String.Empty Then
+            tb_Codigo.BackColor = Color.Red
+            MEP.SetError(tb_Codigo, "El Producto debe tener un código!".ToUpper)
+            _ok = False
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "Seleccione un producto para efectuar la grabación".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+        Else
+            tb_Codigo.BackColor = Color.White
+            MEP.SetError(tb_Codigo, "")
+        End If
+        If tbCodOrden.Text = String.Empty Then
+            tbCodOrden.BackColor = Color.Red
+            MEP.SetError(tbCodOrden, "Debe estar enlazado a un Nro. de Orden de Pedido!".ToUpper)
+            _ok = False
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "Seleccione Nro. de Orden para efectuar la grabación".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+        Else
+            tbCodOrden.BackColor = Color.White
+            MEP.SetError(tbCodOrden, "")
+        End If
         If tb_Descripcion.Text = String.Empty Then
             tb_Descripcion.BackColor = Color.Red
-            MEP.SetError(tb_Descripcion, "ingrese el una descripcion!".ToUpper)
+            MEP.SetError(tb_Descripcion, "ingrese una descripcion!".ToUpper)
             _ok = False
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Ingrese un descripcion para efectuar la grabación".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -1369,6 +1401,48 @@ Public Class F0_ProductoCompuesto
         End Try
     End Sub
 
+    Private Sub tbCodOrden_KeyDown(sender As Object, e As KeyEventArgs) Handles tbCodOrden.KeyDown
+        Try
+
+            If cbSucursal.SelectedIndex <> -1 Then
+                If (tb_Fecha.IsInputReadOnly = False) Then
+                    If e.KeyData = Keys.Control + Keys.Enter Then
+                        Dim dt As DataTable
+                        dt = L_fnOrdenesPedidos()
+                        Dim listEstCeldas As New List(Of Modelo.Celda)
+                        listEstCeldas.Add(New Modelo.Celda("oanumi,", True, "CÓD. ORDEN", 90))
+                        listEstCeldas.Add(New Modelo.Celda("oafdoc", True, "F.ORDEN", 120, "dd/MM/yyyy"))
+                        listEstCeldas.Add(New Modelo.Celda("oacliente", False, "IDCLIENTE", 50))
+                        listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "CLIENTE", 220))
+                        listEstCeldas.Add(New Modelo.Celda("oafentr", True, "F. ENTREGA", 120, "dd/MM/yyyy"))
+                        listEstCeldas.Add(New Modelo.Celda("oaped", True, "PEDIDO".ToUpper, 350))
+                        listEstCeldas.Add(New Modelo.Celda("oaest", False, "ESTADO".ToUpper, 50))
+                        Dim ef = New Efecto
+                        ef.tipo = 3
+                        ef.dt = dt
+                        ef.SeleclCol = 2
+                        ef.listEstCeldas = listEstCeldas
+                        ef.alto = 50
+                        ef.ancho = 350
+                        ef.Context = "Seleccione una Orden de Pedido".ToUpper
+                        ef.ShowDialog()
+                        Dim bandera As Boolean = False
+                        bandera = ef.band
+                        If (bandera = True) Then
+                            Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                            tbCodOrden.Text = Row.Cells("oanumi").Value
+                            tb_Observacion.Text = Row.Cells("oanumi").Value.ToString + "-" + Row.Cells("ydrazonsocial").Value.ToString
+
+                        End If
+
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
+
     Public Sub MP_NuevoRegistro()
         Try
             Dim id As String = ""
@@ -1381,7 +1455,7 @@ Public Class F0_ProductoCompuesto
                                                                     tb_Descripcion.Text, tb_Observacion.Text, tb_Fecha.Value,
                                                                     tb_FechaFabrica.Value, tb_FechaVencimieto.Value, tb_Total.Value,
                                                                     _detalle, Tb_Precio4.Value, cbSucursal.Value,
-                                                                    tb_Cantidad.Value)
+                                                                    tb_Cantidad.Value, tbCodOrden.Text)
             If res Then
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -1412,7 +1486,7 @@ Public Class F0_ProductoCompuesto
                                                                        cb_Tipo.Value, tb_Descripcion.Text, tb_Observacion.Text,
                                                                        tb_Fecha.Value, tb_FechaFabrica.Value, tb_FechaVencimieto.Value,
                                                                        tb_Total.Value, CType(Dgv_Detalle.DataSource, DataTable),
-                                                                       Tb_Precio4.Value, cbSucursal.Value, tb_Cantidad.Value)
+                                                                       Tb_Precio4.Value, cbSucursal.Value, tb_Cantidad.Value, tbCodOrden.Text)
             If res Then
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                 ToastNotification.Show(Me, "Código de producto compuesto ".ToUpper + tb_Id.Text.ToString() + " Modificado con Exito.".ToUpper,

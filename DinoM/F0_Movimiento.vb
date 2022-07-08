@@ -243,24 +243,18 @@ Public Class F0_Movimiento
 
         With grdetalle.RootTable.Columns("producto")
             .Caption = "PRODUCTOS"
-            .Width = 250
+            .Width = 450
             .Visible = True
-
-
         End With
         With grdetalle.RootTable.Columns("Laboratorio")
             .Caption = "LABORATORIO"
             .Width = 200
-            .Visible = True
-
-
+            .Visible = False
         End With
         With grdetalle.RootTable.Columns("Presentacion")
             .Caption = "PRESENTACION"
             .Width = 150
-            .Visible = True
-
-
+            .Visible = False
         End With
         With grdetalle.RootTable.Columns("iccant")
             .Width = 160
@@ -487,12 +481,10 @@ Public Class F0_Movimiento
 
         End With
         With grproducto.RootTable.Columns("yfcdprod1")
-            .Width = 350
+            .Width = 450
             .Caption = "PRODUCTOS"
             .Visible = True
-
         End With
-
         With grproducto.RootTable.Columns("yfcdprod2")
             .Width = 250
             .Visible = True
@@ -500,15 +492,14 @@ Public Class F0_Movimiento
         End With
         With grproducto.RootTable.Columns("Presentacion")
             .Width = 120
-            .Visible = True
+            .Visible = False
             .Caption = "PRESENTACION"
         End With
         With grproducto.RootTable.Columns("Laboratorio")
             .Width = 200
-            .Visible = True
+            .Visible = False
             .Caption = "LABORATORIO"
         End With
-
         With grproducto.RootTable.Columns("yfcdprod2")
             .Width = 200
             .Visible = True
@@ -1219,8 +1210,7 @@ salirIf:
     Private Sub grdetalle_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellValueChanged
 
         If (e.Column.Index = grdetalle.RootTable.Columns("iccant").Index) Or (e.Column.Index = grdetalle.RootTable.Columns("icpcosto").Index) Then
-            If (Not IsNumeric(grdetalle.GetValue("iccant")) Or grdetalle.GetValue("iccant").ToString = String.Empty Or
-                Not IsNumeric(grdetalle.GetValue("icpcosto")) Or grdetalle.GetValue("icpcosto").ToString = String.Empty) Then
+            If (Not IsNumeric(grdetalle.GetValue("iccant")) Or grdetalle.GetValue("iccant").ToString = String.Empty) Then
 
                 'grDetalle.GetRow(rowIndex).Cells("cant").Value = 1
                 '  grDetalle.CurrentRow.Cells.Item("cant").Value = 1
@@ -1236,7 +1226,7 @@ salirIf:
                 End If
 
             Else
-                If (grdetalle.GetValue("iccant") > 0) Or (grdetalle.GetValue("icpcosto") > 0) Then
+                If (grdetalle.GetValue("iccant") > 0) Then
                     Dim lin As Integer = grdetalle.GetValue("icid")
                     Dim pos As Integer = -1
                     _fnObtenerFilaDetalle(pos, lin)
@@ -1502,8 +1492,8 @@ salirIf:
 
             End If
             If (cbConcepto.Value = 2) Then
-                swContabiliza.Visible = True
-                lbContabiliza.Visible = True
+                swContabiliza.Visible = False
+                lbContabiliza.Visible = False
             Else
                 swContabiliza.Visible = False
                 lbContabiliza.Visible = False

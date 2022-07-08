@@ -250,9 +250,9 @@ Partial Class PR_StockActualProductosLotes
         Me.LabelX1.Location = New System.Drawing.Point(7, 36)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(82, 16)
+        Me.LabelX1.Size = New System.Drawing.Size(60, 16)
         Me.LabelX1.TabIndex = 258
-        Me.LabelX1.Text = "Laboratorio:"
+        Me.LabelX1.Text = "Atributo:"
         '
         'cbGrupos
         '

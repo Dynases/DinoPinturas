@@ -26,6 +26,11 @@ Partial Class P_Principal
         Dim MetroTileFrame2 As DevComponents.DotNetBar.Metro.MetroTileFrame
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(P_Principal))
         Me.SideNav1 = New DevComponents.DotNetBar.Controls.SideNav()
+        Me.SideNavPanel8 = New DevComponents.DotNetBar.Controls.SideNavPanel()
+        Me.MenuProduccio = New DevComponents.DotNetBar.Metro.MetroTilePanel()
+        Me.btConfProductoCompuestos = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btConfFormula = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btProdFormulaProduccion = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.SideNav_Ventas = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.PanelVentas = New System.Windows.Forms.Panel()
         Me.MetroTilePanelVentas = New DevComponents.DotNetBar.Metro.MetroTilePanel()
@@ -77,11 +82,6 @@ Partial Class P_Principal
         Me.btComprasDetallado = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.MetroTileItem22 = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.MetroTileItem23 = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.SideNavPanel8 = New DevComponents.DotNetBar.Controls.SideNavPanel()
-        Me.MenuProduccio = New DevComponents.DotNetBar.Metro.MetroTilePanel()
-        Me.btConfProductoCompuestos = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btConfFormula = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btProdFormulaProduccion = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.SideNavPanel7 = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.MenuCreditos = New DevComponents.DotNetBar.Metro.MetroTilePanel()
         Me.btnCredPago = New DevComponents.DotNetBar.Metro.MetroTileItem()
@@ -165,6 +165,7 @@ Partial Class P_Principal
         MetroTileFrame1 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         MetroTileFrame2 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         Me.SideNav1.SuspendLayout()
+        Me.SideNavPanel8.SuspendLayout()
         Me.SideNav_Ventas.SuspendLayout()
         Me.PanelVentas.SuspendLayout()
         Me.SideNav_Conf.SuspendLayout()
@@ -173,7 +174,6 @@ Partial Class P_Principal
         Me.Panel1.SuspendLayout()
         Me.SideNavPanel6.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.SideNavPanel8.SuspendLayout()
         Me.SideNavPanel7.SuspendLayout()
         Me.SideNav_Logistica.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -213,11 +213,11 @@ Partial Class P_Principal
         'SideNav1
         '
         Me.SideNav1.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
-        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
         Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNavPanel8)
+        Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
+        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
         Me.SideNav1.Controls.Add(Me.SideNav_Logistica)
         Me.SideNav1.Controls.Add(Me.SideNavPanel3)
@@ -233,6 +233,95 @@ Partial Class P_Principal
         Me.SideNav1.TabIndex = 1
         Me.SideNav1.Text = "SideNav1"
         '
+        'SideNavPanel8
+        '
+        Me.SideNavPanel8.Controls.Add(Me.MenuProduccio)
+        Me.SideNavPanel8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SideNavPanel8.Location = New System.Drawing.Point(142, 36)
+        Me.SideNavPanel8.Name = "SideNavPanel8"
+        Me.SideNavPanel8.Size = New System.Drawing.Size(836, 524)
+        Me.SideNavPanel8.TabIndex = 193
+        Me.SideNavPanel8.Visible = False
+        '
+        'MenuProduccio
+        '
+        Me.MenuProduccio.BackColor = System.Drawing.Color.Transparent
+        Me.MenuProduccio.BackgroundImage = Global.DinoM.My.Resources.Resources.fondoInfo
+        Me.MenuProduccio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        '
+        '
+        '
+        Me.MenuProduccio.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
+        Me.MenuProduccio.BackgroundStyle.Class = "MetroTilePanel"
+        Me.MenuProduccio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MenuProduccio.ContainerControlProcessDialogKey = True
+        Me.MenuProduccio.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MenuProduccio.DragDropSupport = True
+        Me.MenuProduccio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuProduccio.ForeColor = System.Drawing.Color.White
+        Me.MenuProduccio.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfProductoCompuestos, Me.btConfFormula, Me.btProdFormulaProduccion})
+        Me.MenuProduccio.ItemSpacing = 10
+        Me.MenuProduccio.Location = New System.Drawing.Point(0, 0)
+        Me.MenuProduccio.MultiLine = True
+        Me.MenuProduccio.Name = "MenuProduccio"
+        Me.MenuProduccio.Size = New System.Drawing.Size(836, 524)
+        Me.MenuProduccio.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010
+        Me.MenuProduccio.TabIndex = 1
+        Me.MenuProduccio.Text = "mtp1Configuracion"
+        '
+        'btConfProductoCompuestos
+        '
+        Me.btConfProductoCompuestos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfProductoCompuestos.Name = "btConfProductoCompuestos"
+        Me.btConfProductoCompuestos.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfProductoCompuestos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfProductoCompuestos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfProductoCompuestos.TileStyle.BackColor = System.Drawing.Color.Transparent
+        Me.btConfProductoCompuestos.TileStyle.BackColor2 = System.Drawing.SystemColors.ControlDarkDark
+        Me.btConfProductoCompuestos.TileStyle.BackgroundImage = CType(resources.GetObject("btConfProductoCompuestos.TileStyle.BackgroundImage"), System.Drawing.Image)
+        Me.btConfProductoCompuestos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfProductoCompuestos.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btConfProductoCompuestos.TileStyle.TextColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btConfProductoCompuestos.TitleText = "FORMULA"
+        '
+        'btConfFormula
+        '
+        Me.btConfFormula.Image = CType(resources.GetObject("btConfFormula.Image"), System.Drawing.Image)
+        Me.btConfFormula.ImageIndent = New System.Drawing.Point(0, 0)
+        Me.btConfFormula.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfFormula.Name = "btConfFormula"
+        Me.btConfFormula.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfFormula.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfFormula.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfFormula.TileStyle.BackColor = System.Drawing.Color.Transparent
+        Me.btConfFormula.TileStyle.BackColor2 = System.Drawing.Color.DimGray
+        Me.btConfFormula.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfFormula.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btConfFormula.TitleText = "FORMULA MAGISTRAL"
+        '
+        'btProdFormulaProduccion
+        '
+        Me.btProdFormulaProduccion.Image = Global.DinoM.My.Resources.Resources.producto
+        Me.btProdFormulaProduccion.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btProdFormulaProduccion.Name = "btProdFormulaProduccion"
+        Me.btProdFormulaProduccion.SymbolColor = System.Drawing.Color.Empty
+        Me.btProdFormulaProduccion.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btProdFormulaProduccion.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btProdFormulaProduccion.TileStyle.BackColor = System.Drawing.Color.Transparent
+        Me.btProdFormulaProduccion.TileStyle.BackColor2 = System.Drawing.Color.DimGray
+        Me.btProdFormulaProduccion.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btProdFormulaProduccion.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btProdFormulaProduccion.TitleText = "FORMULA DE PRODUCCION"
+        '
         'SideNav_Ventas
         '
         Me.SideNav_Ventas.Controls.Add(Me.PanelVentas)
@@ -241,6 +330,7 @@ Partial Class P_Principal
         Me.SideNav_Ventas.Name = "SideNav_Ventas"
         Me.SideNav_Ventas.Size = New System.Drawing.Size(836, 524)
         Me.SideNav_Ventas.TabIndex = 134
+        Me.SideNav_Ventas.Visible = False
         '
         'PanelVentas
         '
@@ -745,7 +835,6 @@ Partial Class P_Principal
         Me.SideNavPanel5.Name = "SideNavPanel5"
         Me.SideNavPanel5.Size = New System.Drawing.Size(836, 524)
         Me.SideNavPanel5.TabIndex = 87
-        Me.SideNavPanel5.Visible = False
         '
         'Panel1
         '
@@ -1193,95 +1282,6 @@ Partial Class P_Principal
         Me.MetroTileItem23.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
         Me.MetroTileItem23.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.MetroTileItem23.TitleTextColor = System.Drawing.Color.Red
-        '
-        'SideNavPanel8
-        '
-        Me.SideNavPanel8.Controls.Add(Me.MenuProduccio)
-        Me.SideNavPanel8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SideNavPanel8.Location = New System.Drawing.Point(142, 36)
-        Me.SideNavPanel8.Name = "SideNavPanel8"
-        Me.SideNavPanel8.Size = New System.Drawing.Size(836, 524)
-        Me.SideNavPanel8.TabIndex = 193
-        Me.SideNavPanel8.Visible = False
-        '
-        'MenuProduccio
-        '
-        Me.MenuProduccio.BackColor = System.Drawing.Color.Transparent
-        Me.MenuProduccio.BackgroundImage = Global.DinoM.My.Resources.Resources.fondoInfo
-        Me.MenuProduccio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        '
-        '
-        '
-        Me.MenuProduccio.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
-        Me.MenuProduccio.BackgroundStyle.Class = "MetroTilePanel"
-        Me.MenuProduccio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MenuProduccio.ContainerControlProcessDialogKey = True
-        Me.MenuProduccio.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MenuProduccio.DragDropSupport = True
-        Me.MenuProduccio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuProduccio.ForeColor = System.Drawing.Color.White
-        Me.MenuProduccio.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfProductoCompuestos, Me.btConfFormula, Me.btProdFormulaProduccion})
-        Me.MenuProduccio.ItemSpacing = 10
-        Me.MenuProduccio.Location = New System.Drawing.Point(0, 0)
-        Me.MenuProduccio.MultiLine = True
-        Me.MenuProduccio.Name = "MenuProduccio"
-        Me.MenuProduccio.Size = New System.Drawing.Size(836, 524)
-        Me.MenuProduccio.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010
-        Me.MenuProduccio.TabIndex = 1
-        Me.MenuProduccio.Text = "mtp1Configuracion"
-        '
-        'btConfProductoCompuestos
-        '
-        Me.btConfProductoCompuestos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfProductoCompuestos.Name = "btConfProductoCompuestos"
-        Me.btConfProductoCompuestos.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfProductoCompuestos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfProductoCompuestos.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfProductoCompuestos.TileStyle.BackColor = System.Drawing.Color.Transparent
-        Me.btConfProductoCompuestos.TileStyle.BackColor2 = System.Drawing.SystemColors.ControlDarkDark
-        Me.btConfProductoCompuestos.TileStyle.BackgroundImage = CType(resources.GetObject("btConfProductoCompuestos.TileStyle.BackgroundImage"), System.Drawing.Image)
-        Me.btConfProductoCompuestos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfProductoCompuestos.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btConfProductoCompuestos.TileStyle.TextColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btConfProductoCompuestos.TitleText = "FORMULA"
-        '
-        'btConfFormula
-        '
-        Me.btConfFormula.Image = CType(resources.GetObject("btConfFormula.Image"), System.Drawing.Image)
-        Me.btConfFormula.ImageIndent = New System.Drawing.Point(0, 0)
-        Me.btConfFormula.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfFormula.Name = "btConfFormula"
-        Me.btConfFormula.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfFormula.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfFormula.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfFormula.TileStyle.BackColor = System.Drawing.Color.Transparent
-        Me.btConfFormula.TileStyle.BackColor2 = System.Drawing.Color.DimGray
-        Me.btConfFormula.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfFormula.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btConfFormula.TitleText = "FORMULA MAGISTRAL"
-        '
-        'btProdFormulaProduccion
-        '
-        Me.btProdFormulaProduccion.Image = Global.DinoM.My.Resources.Resources.producto
-        Me.btProdFormulaProduccion.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btProdFormulaProduccion.Name = "btProdFormulaProduccion"
-        Me.btProdFormulaProduccion.SymbolColor = System.Drawing.Color.Empty
-        Me.btProdFormulaProduccion.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btProdFormulaProduccion.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btProdFormulaProduccion.TileStyle.BackColor = System.Drawing.Color.Transparent
-        Me.btProdFormulaProduccion.TileStyle.BackColor2 = System.Drawing.Color.DimGray
-        Me.btProdFormulaProduccion.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btProdFormulaProduccion.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btProdFormulaProduccion.TitleText = "FORMULA DE PRODUCCION"
         '
         'SideNavPanel7
         '
@@ -2192,6 +2192,7 @@ Partial Class P_Principal
         '
         'FP_INVENTARIO
         '
+        Me.FP_INVENTARIO.Checked = True
         Me.FP_INVENTARIO.Name = "FP_INVENTARIO"
         Me.FP_INVENTARIO.Panel = Me.SideNavPanel5
         Me.FP_INVENTARIO.Symbol = ""
@@ -2222,7 +2223,6 @@ Partial Class P_Principal
         '
         'FP_VENTAS
         '
-        Me.FP_VENTAS.Checked = True
         Me.FP_VENTAS.Name = "FP_VENTAS"
         Me.FP_VENTAS.Panel = Me.SideNav_Ventas
         Me.FP_VENTAS.Symbol = ""
@@ -2463,6 +2463,7 @@ Partial Class P_Principal
         Me.Text = "Dino M"
         Me.SideNav1.ResumeLayout(False)
         Me.SideNav1.PerformLayout()
+        Me.SideNavPanel8.ResumeLayout(False)
         Me.SideNav_Ventas.ResumeLayout(False)
         Me.PanelVentas.ResumeLayout(False)
         Me.SideNav_Conf.ResumeLayout(False)
@@ -2471,7 +2472,6 @@ Partial Class P_Principal
         Me.Panel1.ResumeLayout(False)
         Me.SideNavPanel6.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.SideNavPanel8.ResumeLayout(False)
         Me.SideNavPanel7.ResumeLayout(False)
         Me.SideNav_Logistica.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
