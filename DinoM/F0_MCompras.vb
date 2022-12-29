@@ -152,7 +152,7 @@ Public Class F0_MCompras
         btnGrabar.Enabled = True
 
         tbNitProv.ReadOnly = False
-        'swEmision.IsReadOnly = False
+        swEmision.IsReadOnly = False
         swConsigna.IsReadOnly = False
         swRetencion.IsReadOnly = False
         tbNFactura.ReadOnly = False
@@ -653,7 +653,7 @@ Public Class F0_MCompras
         End With
 
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 200
+            .Width = 380
             .Visible = True
             .Caption = "Descripcion"
         End With

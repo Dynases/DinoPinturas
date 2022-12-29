@@ -1647,7 +1647,7 @@ Partial Class F0_Ventas
         Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GPanelProductos.Location = New System.Drawing.Point(263, 0)
         Me.GPanelProductos.Name = "GPanelProductos"
-        Me.GPanelProductos.Size = New System.Drawing.Size(720, 40)
+        Me.GPanelProductos.Size = New System.Drawing.Size(920, 40)
         '
         '
         '
@@ -1687,7 +1687,7 @@ Partial Class F0_Ventas
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(714, 17)
+        Me.Panel7.Size = New System.Drawing.Size(914, 17)
         Me.Panel7.TabIndex = 0
         '
         'grProductos
@@ -1702,7 +1702,7 @@ Partial Class F0_Ventas
         Me.grProductos.Name = "grProductos"
         Me.grProductos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grProductos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grProductos.Size = New System.Drawing.Size(714, 17)
+        Me.grProductos.Size = New System.Drawing.Size(914, 17)
         Me.grProductos.TabIndex = 0
         Me.grProductos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '

@@ -116,6 +116,7 @@ Public Class F0_ProductoCompuesto
                     CType(Dgv_Detalle.DataSource, DataTable).Rows(pos).Item("UnidadMin") = Unidad
                     CType(Dgv_Detalle.DataSource, DataTable).Rows(pos).Item("pdprec") = costo
                     tb_Total.Value = Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns("pdtotal"), AggregateFunction.Sum)
+                    tb_Total_Cantidad.Value = Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns("pdcant"), AggregateFunction.Sum)
                     _DesHabilitarProductos()
                 Else
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -368,6 +369,7 @@ Public Class F0_ProductoCompuesto
                 CType(Dgv_Detalle.DataSource, DataTable).Rows(pos).Item("estado") = 2
             End If
             tb_Total.Value = Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns("pdtotal"), AggregateFunction.Sum)
+            tb_Total_Cantidad.Value = Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns("pdcant"), AggregateFunction.Sum)
         End If
     End Sub
     Private Sub MP_Iniciar()
@@ -643,6 +645,7 @@ Public Class F0_ProductoCompuesto
             .Visible = True
             .Position = 8
         End With
+        tb_Total_Cantidad.Value = Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns("pdcant"), AggregateFunction.Sum)
         With Dgv_Detalle.RootTable.Columns(9)
             .Key = "pdValor1"
             .Caption = "Valor1"
@@ -753,7 +756,10 @@ Public Class F0_ProductoCompuesto
         tb_FechaVencimieto.IsInputReadOnly = False
         tb_Total.IsInputReadOnly = False
         tb_Cantidad.IsInputReadOnly = False
-        Tb_Precio4.IsInputReadOnly = False
+        'Tb_Precio4.IsInputReadOnly = False
+        Tb_Porcentaje.IsInputReadOnly = False
+        Tb_Porcentaje.Visible = True
+        LabelX12.Visible = True
         If (tb_Id.Text.Length > 0) Then
             cbSucursal.ReadOnly = True
         Else
@@ -776,7 +782,9 @@ Public Class F0_ProductoCompuesto
         tb_Total.IsInputReadOnly = True
         Tb_Precio4.IsInputReadOnly = True
         tb_Cantidad.IsInputReadOnly = True
-
+        Tb_Porcentaje.IsInputReadOnly = True
+        Tb_Porcentaje.Visible = False
+        LabelX12.Visible = False
         If Dgv_Detalle.RowCount > 0 Then
             Dgv_Detalle.RootTable.Columns("img").Visible = False
         End If
@@ -808,6 +816,7 @@ Public Class F0_ProductoCompuesto
         tb_Cantidad.Value = 0
         tb_Total.Value = 0
         Tb_Precio4.Value = 0
+        Tb_Porcentaje.Value = 0
         tb_Descripcion.Focus()
         FilaSelectLote = Nothing
         _idProducto = 0
@@ -874,6 +883,7 @@ Public Class F0_ProductoCompuesto
                     tb_FechaFabrica.Value = _tablaEncabezado.Rows(0).Item("pcffab").ToString()
                     tb_FechaVencimieto.Value = _tablaEncabezado.Rows(0).Item("pcfven").ToString()
                     tb_Total.Value = _tablaEncabezado.Rows(0).Item("pctotal").ToString()
+
                     Tb_Precio4.Value = _tablaEncabezado.Rows(0).Item("pcPrecio").ToString()
                     _idProducto = _tablaEncabezado.Rows(0).Item("pcIdProducto").ToString()
                     cb_Tipo.Value = _tablaEncabezado.Rows(0).Item("pcEst")
@@ -1279,6 +1289,7 @@ Public Class F0_ProductoCompuesto
                 End If
                 Dgv_Detalle.RootTable.ApplyFilter(New Janus.Windows.GridEX.GridEXFilterCondition(Dgv_Detalle.RootTable.Columns("estado"), Janus.Windows.GridEX.ConditionOperator.GreaterThanOrEqualTo, 0))
                 tb_Total.Value = Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns("pdtotal"), AggregateFunction.Sum)
+                tb_Total_Cantidad.Value = Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns("pdcant"), AggregateFunction.Sum)
                 Dgv_Detalle.Select()
                 Dgv_Detalle.Col = 3
                 Dgv_Detalle.Row = Dgv_Detalle.RowCount - 1
@@ -1388,7 +1399,7 @@ Public Class F0_ProductoCompuesto
 
     Private Sub Dgv_Detalle_MouseClick(sender As Object, e As MouseEventArgs) Handles Dgv_Detalle.MouseClick
         Try
-            If (tb_Codigo.ReadOnly) Then
+            If (tb_Codigo.ReadOnly = False) Then
                 Return
             End If
             If (Dgv_Detalle.RowCount >= 2) Then
@@ -1431,7 +1442,7 @@ Public Class F0_ProductoCompuesto
                         If (bandera = True) Then
                             Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
                             tbCodOrden.Text = Row.Cells("oanumi").Value
-                            tb_Observacion.Text = Row.Cells("oanumi").Value.ToString + "-" + Row.Cells("ydrazonsocial").Value.ToString
+                            tb_Observacion.Text = Row.Cells("oanumi").Value.ToString + "-" + Row.Cells("ydrazonsocial").Value.ToString + "-" + Row.Cells("oaped").Value.ToString
 
                         End If
 
@@ -1441,6 +1452,11 @@ Public Class F0_ProductoCompuesto
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
+    End Sub
+
+    Private Sub Tb_Porcentaje_ValueChanged(sender As Object, e As EventArgs) Handles Tb_Porcentaje.ValueChanged
+
+        Tb_Precio4.Text = tb_Total.Value + ((tb_Total.Value * Tb_Porcentaje.Value) / 100)
     End Sub
 
     Public Sub MP_NuevoRegistro()

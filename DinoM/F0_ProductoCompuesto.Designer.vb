@@ -69,6 +69,10 @@ Partial Class F0_ProductoCompuesto
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Dgv_Productos = New Janus.Windows.GridEX.GridEX()
         Me.btnHabilitar = New DevComponents.DotNetBar.ButtonX()
+        Me.Tb_Porcentaje = New DevComponents.Editors.DoubleInput()
+        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
+        Me.tb_Total_Cantidad = New DevComponents.Editors.DoubleInput()
+        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,6 +111,8 @@ Partial Class F0_ProductoCompuesto
         Me.GPanelProductos.SuspendLayout()
         Me.Panel7.SuspendLayout()
         CType(Me.Dgv_Productos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Tb_Porcentaje, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tb_Total_Cantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
@@ -326,6 +332,8 @@ Partial Class F0_ProductoCompuesto
         '
         Me.Panel2.AutoScroll = True
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.LabelX12)
+        Me.Panel2.Controls.Add(Me.Tb_Porcentaje)
         Me.Panel2.Controls.Add(Me.LabelX5)
         Me.Panel2.Controls.Add(Me.LabelX10)
         Me.Panel2.Controls.Add(Me.tbCodOrden)
@@ -504,7 +512,7 @@ Partial Class F0_ProductoCompuesto
         Me.Tb_Precio4.Location = New System.Drawing.Point(556, 107)
         Me.Tb_Precio4.MinValue = 0R
         Me.Tb_Precio4.Name = "Tb_Precio4"
-        Me.Tb_Precio4.Size = New System.Drawing.Size(120, 21)
+        Me.Tb_Precio4.Size = New System.Drawing.Size(95, 21)
         Me.Tb_Precio4.TabIndex = 5
         Me.Tb_Precio4.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
@@ -948,6 +956,8 @@ Partial Class F0_ProductoCompuesto
         Me.PanelTotal.AutoScroll = True
         Me.PanelTotal.BackColor = System.Drawing.Color.SlateGray
         Me.PanelTotal.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.PanelTotal.Controls.Add(Me.LabelX13)
+        Me.PanelTotal.Controls.Add(Me.tb_Total_Cantidad)
         Me.PanelTotal.Controls.Add(Me.tb_Total)
         Me.PanelTotal.Controls.Add(Me.LabelX11)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -1159,6 +1169,74 @@ Partial Class F0_ProductoCompuesto
         Me.btnHabilitar.Text = "HABILITAR"
         Me.btnHabilitar.TextColor = System.Drawing.Color.White
         '
+        'Tb_Porcentaje
+        '
+        '
+        '
+        '
+        Me.Tb_Porcentaje.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.Tb_Porcentaje.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.Tb_Porcentaje.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.Tb_Porcentaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Tb_Porcentaje.Increment = 1.0R
+        Me.Tb_Porcentaje.Location = New System.Drawing.Point(654, 107)
+        Me.Tb_Porcentaje.MinValue = 0R
+        Me.Tb_Porcentaje.Name = "Tb_Porcentaje"
+        Me.Tb_Porcentaje.Size = New System.Drawing.Size(50, 21)
+        Me.Tb_Porcentaje.TabIndex = 385
+        Me.Tb_Porcentaje.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'LabelX12
+        '
+        Me.LabelX12.AutoSize = True
+        Me.LabelX12.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX12.Font = New System.Drawing.Font("Georgia", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX12.Location = New System.Drawing.Point(704, 104)
+        Me.LabelX12.Name = "LabelX12"
+        Me.LabelX12.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX12.Size = New System.Drawing.Size(19, 26)
+        Me.LabelX12.TabIndex = 386
+        Me.LabelX12.Text = "%"
+        '
+        'tb_Total_Cantidad
+        '
+        '
+        '
+        '
+        Me.tb_Total_Cantidad.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tb_Total_Cantidad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tb_Total_Cantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tb_Total_Cantidad.DisplayFormat = "0.00000"
+        Me.tb_Total_Cantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tb_Total_Cantidad.Increment = 1.0R
+        Me.tb_Total_Cantidad.Location = New System.Drawing.Point(621, 3)
+        Me.tb_Total_Cantidad.MinValue = 0R
+        Me.tb_Total_Cantidad.Name = "tb_Total_Cantidad"
+        Me.tb_Total_Cantidad.Size = New System.Drawing.Size(110, 21)
+        Me.tb_Total_Cantidad.TabIndex = 39
+        Me.tb_Total_Cantidad.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'LabelX13
+        '
+        Me.LabelX13.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX13.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX13.ForeColor = System.Drawing.Color.White
+        Me.LabelX13.Location = New System.Drawing.Point(489, 3)
+        Me.LabelX13.Name = "LabelX13"
+        Me.LabelX13.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX13.Size = New System.Drawing.Size(120, 18)
+        Me.LabelX13.TabIndex = 40
+        Me.LabelX13.Text = "Total Cantidad:"
+        '
         'F0_ProductoCompuesto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1208,6 +1286,8 @@ Partial Class F0_ProductoCompuesto
         Me.GPanelProductos.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         CType(Me.Dgv_Productos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Tb_Porcentaje, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tb_Total_Cantidad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1256,4 +1336,8 @@ Partial Class F0_ProductoCompuesto
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX10 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbCodOrden As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents Tb_Porcentaje As DevComponents.Editors.DoubleInput
+    Friend WithEvents tb_Total_Cantidad As DevComponents.Editors.DoubleInput
+    Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
 End Class

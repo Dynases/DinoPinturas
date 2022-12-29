@@ -844,7 +844,7 @@ Public Class F0_Ventas
             .Visible = gb_CodigoBarra
         End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 250
+            .Width = 430
             .Visible = True
             .Caption = "DESCRIPCIÓN"
         End With
@@ -1024,7 +1024,7 @@ Public Class F0_Ventas
             .Visible = gb_CodigoBarra
         End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 250
+            .Width = 350
             .Visible = True
             .Caption = "DESCRIPCIÓN"
         End With
@@ -1588,10 +1588,12 @@ Public Class F0_Ventas
                                     Dim pos As Integer = dtDetalle.Rows.Count - 1
 
                                     Dim precio As Double = dtDetalle.Rows(pos).Item("tbpbas")
+
                                     Dim total As Decimal = CStr(Format(precio * saldo, "####0.00"))
+                                    Dim descuento As Double = dtDetalle.Rows(pos).Item("tbtotdesc")
 
                                     dtDetalle.Rows(pos).Item("tbptot") = total
-                                    dtDetalle.Rows(pos).Item("tbtotdesc") = total
+                                    dtDetalle.Rows(pos).Item("tbtotdesc") = descuento
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = total
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = saldo
                                     dtDetalle.Rows(pos).Item("tbcmin") = saldo
